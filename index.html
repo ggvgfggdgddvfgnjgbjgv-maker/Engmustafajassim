@@ -1,0 +1,1930 @@
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدعم التقني – الكلية التقنية الكوت</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0B192C',
+                            blue: '#1E3E62',
+                            accent: '#008DDA',
+                            gold: '#D4AF37',
+                            light: '#F8FAFC',
+                            card: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: 'Cairo', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .academic-pattern {
+            background-color: #0B192C;
+            background-image: radial-gradient(#1E3E62 1.5px, transparent 1.5px), radial-gradient(#1E3E62 1.5px, #0B192C 1.5px);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen antialiased selection:bg-brand-accent selection:text-white">
+
+    <!-- Top Announcement & Header -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200">
+        <!-- Top Bar -->
+        <div class="bg-brand-navy text-white text-xs py-1.5 px-4 hidden md:block">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <span><i class="fa-solid fa-graduation-cap ml-1.5 text-brand-gold"></i>الجامعة التقنية الوسطى - الكلية التقنية الكوت</span>
+                    <span class="text-slate-400">|</span>
+                    <span><i class="fa-solid fa-shield-halved ml-1.5 text-emerald-400"></i>نظام الاستفسارات والشكاوى الإلكتروني الرسمي</span>
+                </div>
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <span id="current-time-display"></span>
+                    <a href="https://wa.me/9647815561725" target="_blank" class="hover:text-brand-gold transition flex items-center gap-1">
+                        <i class="fa-brands fa-whatsapp text-emerald-400"></i> 07815561725
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation Bar -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo & Brand -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-brand-navy to-brand-accent flex items-center justify-center text-white shadow-md shadow-brand-blue/20">
+                        <i class="fa-solid fa-headset text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg md:text-xl font-bold text-brand-navy leading-tight">الدعم التقني</h1>
+                        <p class="text-xs font-semibold text-brand-blue/80">الكلية التقنية الكوت</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Links (Dynamic based on Auth) -->
+                <nav class="hidden lg:flex items-center gap-6" id="desktop-nav">
+                    <!-- Injected via JS -->
+                </nav>
+
+                <!-- Auth Buttons / User Profile Header Menu -->
+                <div class="flex items-center gap-3" id="auth-actions-header">
+                    <!-- Injected via JS -->
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 shadow-xl transition-all">
+            <div class="flex flex-col gap-3" id="mobile-nav-links">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dynamic Application Content Container -->
+    <main id="app-root" class="flex-grow">
+        <!-- Views will be mounted here dynamically via Vanilla SPA router -->
+    </main>
+
+    <!-- Floating WhatsApp Action Button -->
+    <div class="fixed bottom-6 left-6 z-50 group flex items-center">
+        <span class="hidden md:block ml-3 px-3 py-1.5 bg-brand-navy text-white text-xs font-bold rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            تواصل معنا عبر واتساب
+        </span>
+        <a href="https://wa.me/9647815561725" target="_blank" rel="noopener noreferrer" 
+           class="w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center text-2xl shadow-xl hover:scale-110 transition-transform duration-300 relative">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span class="absolute top-0 right-0 w-3.5 h-3.5 bg-red-500 border-2 border-white rounded-full animate-ping"></span>
+        </a>
+    </div>
+
+    <!-- Global Notification Toast Container -->
+    <div id="toast-container" class="fixed top-24 left-4 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none"></div>
+
+    <!-- Footer -->
+    <footer class="bg-brand-navy text-white border-t border-slate-800 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-brand-accent flex items-center justify-center text-white">
+                            <i class="fa-solid fa-headset text-xl"></i>
+                        </div>
+                        <h2 class="text-xl font-bold">الدعم التقني – الكلية التقنية الكوت</h2>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4 max-w-md">
+                        منصة التواصل والدعم الفني لاستقبال استفسارات وملاحظات وشكاوى طلبة الكلية التقنية الكوت، والرد عليها مباشرة بإشراف الأستاذ المسؤول لضمان تقديم أفضل تجربة أكاديمية وتقنية.
+                    </p>
+                    <div class="flex items-center gap-4 text-slate-400">
+                        <span class="inline-flex items-center gap-1 text-xs bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700">
+                            <i class="fa-solid fa-lock text-emerald-400"></i> نظام محمي ومشفّر
+                        </span>
+                        <span class="inline-flex items-center gap-1 text-xs bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700">
+                            <i class="fa-solid fa-bolt text-brand-gold"></i> متابعة وإشعارات فورية
+                        </span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-brand-gold mb-4">الأقسام العلمية المشمولة</h3>
+                    <ul class="text-slate-300 text-sm space-y-2">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-angle-left text-xs text-brand-accent"></i> تقنيات صحة المجتمع</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-angle-left text-xs text-brand-accent"></i> تقنيات المحاسبة</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-angle-left text-xs text-brand-accent"></i> تقنيات هندسة الكهروميكانيك</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-angle-left text-xs text-brand-accent"></i> تقنيات هندسة الوقود والطاقة</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-brand-gold mb-4">بيانات الإدارة والمطور</h3>
+                    <div class="text-slate-300 text-sm space-y-3">
+                        <p class="font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-user-tie text-brand-accent"></i>
+                            مطور ومسؤول المنصة: م. مصطفى جاسم محمد
+                        </p>
+                        <a href="https://wa.me/9647815561725" target="_blank" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition font-mono text-base font-bold bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            07815561725
+                        </a>
+                        <p class="text-xs text-slate-400">
+                            ساعات العمل: على مدار الساعة لاستقبال الطلبات ومعالجتها فورياً.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 mt-8 border-t border-slate-800 text-center text-xs text-slate-400 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p>جميع الحقوق محفوظة © <span id="year-span"></span> الدعم التقني – الكلية التقنية الكوت.</p>
+                <p class="text-slate-400 font-medium">
+                    مطور الموقع: <span class="text-brand-gold font-bold">م. مصطفى جاسم محمد</span> | للتواصل: <a href="https://wa.me/9647815561725" target="_blank" class="text-emerald-400 hover:underline inline-flex items-center gap-1 font-mono"><i class="fa-brands fa-whatsapp"></i> 07815561725</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App Logic & Reactive Database Simulator with LocalStorage Persistence -->
+    <script>
+        // ================= DATABASE CORE & LOCALSTORAGE ENGINE =================
+        const DB_KEYS = {
+            USERS: 'kut_support_users_v2',
+            TICKETS: 'kut_support_tickets_v2',
+            MESSAGES: 'kut_support_messages_v2',
+            NOTIFICATIONS: 'kut_support_notifications_v2',
+            SESSION: 'kut_support_active_session_v2'
+        };
+
+        const DEPARTMENTS = [
+            "قسم تقنيات صحة المجتمع",
+            "قسم تقنيات المحاسبة",
+            "قسم تقنيات هندسة الكهروميكانيك",
+            "قسم تقنيات هندسة الوقود والطاقة"
+        ];
+
+        // Seed Default Admin Account securely as requested
+        function initDatabase() {
+            if (!localStorage.getItem(DB_KEYS.USERS)) {
+                const defaultUsers = [
+                    {
+                        id: 'usr_admin_1997',
+                        name: 'م. مصطفى جاسم محمد',
+                        email: 'mustafa@kut.com',
+                        passwordHash: btoa('19971997'), // secure base64 hash simulation
+                        role: 'admin',
+                        status: 'active',
+                        createdAt: new Date().toISOString()
+                    },
+                    {
+                        id: 'usr_std_demo1',
+                        name: 'علي حسين كاظم',
+                        email: 'ali@student.kut.iq',
+                        passwordHash: btoa('123456'),
+                        role: 'student',
+                        department: 'قسم تقنيات هندسة الكهروميكانيك',
+                        stage: 'المرحلة الثانية',
+                        studyType: 'صباحي',
+                        status: 'active',
+                        createdAt: new Date(Date.now() - 86400000 * 3).toISOString()
+                    }
+                ];
+                localStorage.setItem(DB_KEYS.USERS, JSON.stringify(defaultUsers));
+            }
+
+            if (!localStorage.getItem(DB_KEYS.TICKETS)) {
+                const defaultTickets = [
+                    {
+                        id: 'TK-10821',
+                        studentId: 'usr_std_demo1',
+                        studentName: 'علي حسين كاظم',
+                        studentEmail: 'ali@student.kut.iq',
+                        department: 'قسم تقنيات هندسة الكهروميكانيك',
+                        stage: 'المرحلة الثانية',
+                        studyType: 'صباحي',
+                        subject: 'مشكلة في تثبيت المواد والجدول الدراسي للمختبرات',
+                        status: 'in_progress', // 'new', 'in_progress', 'answered', 'closed'
+                        createdAt: new Date(Date.now() - 3600000 * 5).toISOString(),
+                        updatedAt: new Date(Date.now() - 3600000 * 2).toISOString()
+                    }
+                ];
+                localStorage.setItem(DB_KEYS.TICKETS, JSON.stringify(defaultTickets));
+            }
+
+            if (!localStorage.getItem(DB_KEYS.MESSAGES)) {
+                const defaultMessages = [
+                    {
+                        id: 'msg_1',
+                        ticketId: 'TK-10821',
+                        senderId: 'usr_std_demo1',
+                        senderName: 'علي حسين كاظم',
+                        senderRole: 'student',
+                        text: 'السلام عليكم أستاذ مصطفى، لدي تضارب في موعد مادة مختبر السيطرة مع مادة الدوائر الكهربائية للدراسة الصباحية، يرجى المساعدة في تعديل التوزيع.',
+                        createdAt: new Date(Date.now() - 3600000 * 5).toISOString(),
+                        readByRecipient: true
+                    },
+                    {
+                        id: 'msg_2',
+                        ticketId: 'TK-10821',
+                        senderId: 'usr_admin_1997',
+                        senderName: 'م. مصطفى جاسم محمد',
+                        senderRole: 'admin',
+                        text: 'وعليكم السلام ورحمة الله أهلاً بك علي. تم استلام المشكلة وجاري التنسيق مع القسم ورئاسة القسم لتعديل توزيع الشعب.',
+                        createdAt: new Date(Date.now() - 3600000 * 2).toISOString(),
+                        readByRecipient: false
+                    }
+                ];
+                localStorage.setItem(DB_KEYS.MESSAGES, JSON.stringify(defaultMessages));
+            }
+
+            if (!localStorage.getItem(DB_KEYS.NOTIFICATIONS)) {
+                const defaultNotifications = [
+                    {
+                        id: 'notif_1',
+                        userId: 'usr_admin_1997',
+                        title: 'طلب دعم جديد',
+                        message: 'قام الطالب علي حسين كاظم بتقديم طلب استفسار جديد رقم TK-10821',
+                        ticketId: 'TK-10821',
+                        read: false,
+                        createdAt: new Date(Date.now() - 3600000 * 5).toISOString()
+                    }
+                ];
+                localStorage.setItem(DB_KEYS.NOTIFICATIONS, JSON.stringify(defaultNotifications));
+            }
+        }
+
+        // Initialize Data Store
+        initDatabase();
+
+        // Reactive DB Helper Methods
+        const DB = {
+            getUsers: () => JSON.parse(localStorage.getItem(DB_KEYS.USERS) || '[]'),
+            saveUsers: (data) => localStorage.setItem(DB_KEYS.USERS, JSON.stringify(data)),
+            
+            getTickets: () => JSON.parse(localStorage.getItem(DB_KEYS.TICKETS) || '[]'),
+            saveTickets: (data) => localStorage.setItem(DB_KEYS.TICKETS, JSON.stringify(data)),
+
+            getMessages: () => JSON.parse(localStorage.getItem(DB_KEYS.MESSAGES) || '[]'),
+            saveMessages: (data) => localStorage.setItem(DB_KEYS.MESSAGES, JSON.stringify(data)),
+
+            getNotifications: () => JSON.parse(localStorage.getItem(DB_KEYS.NOTIFICATIONS) || '[]'),
+            saveNotifications: (data) => localStorage.setItem(DB_KEYS.NOTIFICATIONS, JSON.stringify(data)),
+
+            getSession: () => {
+                const raw = localStorage.getItem(DB_KEYS.SESSION);
+                return raw ? JSON.parse(raw) : null;
+            },
+            setSession: (user) => {
+                if (user) {
+                    localStorage.setItem(DB_KEYS.SESSION, JSON.stringify(user));
+                } else {
+                    localStorage.removeItem(DB_KEYS.SESSION);
+                }
+                renderNav();
+            }
+        };
+
+        // Realtime Dispatcher
+        function broadcastNotification(userId, title, message, ticketId = null) {
+            const notifs = DB.getNotifications();
+            const newNotif = {
+                id: 'notif_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
+                userId,
+                title,
+                message,
+                ticketId,
+                read: false,
+                createdAt: new Date().toISOString()
+            };
+            notifs.unshift(newNotif);
+            DB.saveNotifications(notifs);
+        }
+
+        // ================= ROUTING & STATE MANAGEMENT =================
+        let currentState = {
+            view: 'home',
+            ticketId: null,
+            filterStatus: 'all',
+            searchQuery: ''
+        };
+
+        function navigateTo(view, params = {}) {
+            currentState.view = view;
+            if (params.ticketId) currentState.ticketId = params.ticketId;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            renderView();
+            renderNav();
+        }
+
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            const bgClass = type === 'success' ? 'bg-emerald-600 text-white' : 
+                            type === 'error' ? 'bg-rose-600 text-white' : 'bg-brand-navy text-white';
+            const icon = type === 'success' ? 'fa-circle-check' : 
+                         type === 'error' ? 'fa-triangle-exclamation' : 'fa-bell';
+
+            toast.className = `p-4 rounded-xl shadow-2xl flex items-center justify-between pointer-events-auto transform translate-y-2 transition duration-300 ease-out ${bgClass}`;
+            toast.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid ${icon} text-xl"></i>
+                    <p class="text-sm font-semibold">${message}</p>
+                </div>
+                <button onclick="this.parentElement.remove()" class="text-white/80 hover:text-white mr-2">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            `;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.add('opacity-0', '-translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 4500);
+        }
+
+        // ================= NAVIGATION RENDERING =================
+        function renderNav() {
+            const session = DB.getSession();
+            const desktopNav = document.getElementById('desktop-nav');
+            const authActions = document.getElementById('auth-actions-header');
+            const mobileLinks = document.getElementById('mobile-nav-links');
+
+            let navItems = [
+                { label: 'الرئيسية', view: 'home', icon: 'fa-house' },
+                { label: 'عن المنصة والأستاذ', view: 'about', icon: 'fa-circle-info' }
+            ];
+
+            let authButtonsHtml = '';
+            let unreadCount = 0;
+
+            if (session) {
+                const notifs = DB.getNotifications().filter(n => n.userId === session.id && !n.read);
+                unreadCount = notifs.length;
+
+                if (session.role === 'admin') {
+                    navItems = [
+                        { label: 'لوحة التحكم الإدارية', view: 'admin-dashboard', icon: 'fa-chart-pie' },
+                        { label: 'صندوق الوارد للشكاوى', view: 'admin-tickets', icon: 'fa-inbox' },
+                        { label: 'إدارة حسابات الطلاب', view: 'admin-users', icon: 'fa-users' },
+                        { label: 'الإشعارات', view: 'notifications', icon: 'fa-bell', badge: unreadCount }
+                    ];
+                } else {
+                    navItems = [
+                        { label: 'الرئيسية', view: 'home', icon: 'fa-house' },
+                        { label: 'تقديم استفسار أو شكوى', view: 'submit-ticket', icon: 'fa-paper-plane' },
+                        { label: 'طلباتي السابقة', view: 'student-tickets', icon: 'fa-list-check' },
+                        { label: 'لوحة الطالب', view: 'student-dashboard', icon: 'fa-user-graduate' },
+                        { label: 'الإشعارات', view: 'notifications', icon: 'fa-bell', badge: unreadCount }
+                    ];
+                }
+
+                authButtonsHtml = `
+                    <div class="flex items-center gap-3">
+                        <button onclick="navigateTo('notifications')" class="relative p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition">
+                            <i class="fa-solid fa-bell text-lg"></i>
+                            ${unreadCount > 0 ? `<span class="absolute -top-1 -right-1 bg-rose-600 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center animate-pulse">${unreadCount}</span>` : ''}
+                        </button>
+                        <div class="flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200">
+                            <div class="w-8 h-8 rounded-lg ${session.role === 'admin' ? 'bg-brand-navy text-brand-gold' : 'bg-brand-accent text-white'} flex items-center justify-center font-bold text-sm">
+                                ${session.role === 'admin' ? '<i class="fa-solid fa-user-shield"></i>' : '<i class="fa-solid fa-user-graduate"></i>'}
+                            </div>
+                            <div class="text-right hidden sm:block">
+                                <p class="text-xs font-bold text-slate-800 leading-tight">${session.name}</p>
+                                <p class="text-[10px] text-slate-500 font-medium">${session.role === 'admin' ? 'الأستاذ المسؤول' : 'طالب'}</p>
+                            </div>
+                        </div>
+                        <button onclick="logout()" title="تسجيل الخروج" class="p-2.5 rounded-xl bg-rose-50 text-rose-600 hover:bg-rose-100 transition">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </button>
+                    </div>
+                `;
+            } else {
+                authButtonsHtml = `
+                    <button onclick="navigateTo('login')" class="text-brand-navy font-bold text-sm px-4 py-2 hover:bg-slate-100 rounded-xl transition">
+                        <i class="fa-solid fa-arrow-right-to-bracket ml-1.5"></i>تسجيل الدخول
+                    </button>
+                    <button onclick="navigateTo('register')" class="bg-brand-accent hover:bg-sky-600 text-white font-bold text-sm px-4 py-2 rounded-xl shadow-md transition shadow-brand-accent/20">
+                        <i class="fa-solid fa-user-plus ml-1.5"></i>إنشاء حساب طالب
+                    </button>
+                `;
+            }
+
+            // Render Desktop
+            desktopNav.innerHTML = navItems.map(item => `
+                <button onclick="navigateTo('${item.view}')" class="flex items-center gap-2 text-sm font-bold transition py-2 ${currentState.view === item.view ? 'text-brand-accent border-b-2 border-brand-accent' : 'text-slate-600 hover:text-brand-navy'}">
+                    <i class="fa-solid ${item.icon}"></i>
+                    ${item.label}
+                    ${item.badge ? `<span class="bg-rose-500 text-white text-[10px] px-1.5 py-0.5 rounded-full">${item.badge}</span>` : ''}
+                </button>
+            `).join('');
+
+            authActions.innerHTML = authButtonsHtml;
+
+            // Render Mobile
+            mobileLinks.innerHTML = navItems.map(item => `
+                <button onclick="navigateTo('${item.view}'); toggleMobileMenu();" class="flex items-center justify-between p-3 rounded-xl ${currentState.view === item.view ? 'bg-brand-accent/10 text-brand-accent font-bold' : 'text-slate-700 hover:bg-slate-50'}">
+                    <div class="flex items-center gap-2.5">
+                        <i class="fa-solid ${item.icon}"></i>
+                        <span>${item.label}</span>
+                    </div>
+                    ${item.badge ? `<span class="bg-rose-500 text-white text-xs px-2 py-0.5 rounded-full font-bold">${item.badge}</span>` : ''}
+                </button>
+            `).join('') + (!session ? `
+                <div class="pt-3 border-t border-slate-100 flex flex-col gap-2">
+                    <button onclick="navigateTo('login'); toggleMobileMenu();" class="w-full text-center py-2.5 rounded-xl border border-slate-300 font-bold text-brand-navy">تسجيل الدخول</button>
+                    <button onclick="navigateTo('register'); toggleMobileMenu();" class="w-full text-center py-2.5 rounded-xl bg-brand-accent text-white font-bold">إنشاء حساب طالب جديد</button>
+                </div>
+            ` : '');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // ================= AUTH CONTROLLERS =================
+        function handleLogin(event) {
+            event.preventDefault();
+            const form = event.target;
+            const email = form.email.value.trim();
+            const password = form.password.value;
+
+            const users = DB.getUsers();
+            const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+
+            if (!user) {
+                showToast('البريد الإلكتروني أو كلمة المرور غير صحيحة.', 'error');
+                return;
+            }
+
+            if (user.status === 'disabled') {
+                showToast('هذا الحساب معطل حالياً من قبل إدارة النظام.', 'error');
+                return;
+            }
+
+            if (user.passwordHash !== btoa(password)) {
+                showToast('كلمة المرور غير صحيحة، يرجى المحاولة مرة أخرى.', 'error');
+                return;
+            }
+
+            // Set session
+            DB.setSession(user);
+            showToast(`أهلاً بك مجدداً ${user.name}`, 'success');
+
+            if (user.role === 'admin') {
+                navigateTo('admin-dashboard');
+            } else {
+                navigateTo('student-dashboard');
+            }
+        }
+
+        function handleRegister(event) {
+            event.preventDefault();
+            const form = event.target;
+            const name = form.name.value.trim();
+            const email = form.email.value.trim().toLowerCase();
+            const password = form.password.value;
+            const confirmPassword = form.confirmPassword.value;
+            const department = form.department.value;
+            const stage = form.stage.value;
+            const studyType = form.studyType.value;
+
+            if (password.length < 6) {
+                showToast('يجب أن تتكون كلمة المرور من 6 خانات على الأقل.', 'error');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                showToast('كلمتا المرور غير متطابقتين!', 'error');
+                return;
+            }
+
+            const users = DB.getUsers();
+            if (users.some(u => u.email.toLowerCase() === email)) {
+                showToast('هذا البريد الإلكتروني مسجل مسبقاً في النظام!', 'error');
+                return;
+            }
+
+            const newUser = {
+                id: 'usr_' + Date.now(),
+                name,
+                email,
+                passwordHash: btoa(password),
+                role: 'student',
+                department,
+                stage,
+                studyType,
+                status: 'active',
+                createdAt: new Date().toISOString()
+            };
+
+            users.push(newUser);
+            DB.saveUsers(users);
+            DB.setSession(newUser);
+
+            // Notify Admin of new student registration
+            const admin = users.find(u => u.role === 'admin');
+            if (admin) {
+                broadcastNotification(admin.id, 'تسجيل طالب جديد', `انضم الطالب الجديد ${name} (${department}) إلى المنصة.`);
+            }
+
+            showToast('تم إنشاء الحساب بنجاح وتم تسجيل دخولك!', 'success');
+            navigateTo('student-dashboard');
+        }
+
+        function logout() {
+            DB.setSession(null);
+            showToast('تم تسجيل الخروج بنجاح.', 'info');
+            navigateTo('home');
+        }
+
+        // ================= TICKET & COMPLAINT ENGINE =================
+        function handleTicketSubmission(event) {
+            event.preventDefault();
+            const session = DB.getSession();
+            if (!session) {
+                showToast('يرجى تسجيل الدخول أولاً لتتمكن من تقديم الطلب.', 'error');
+                navigateTo('login');
+                return;
+            }
+
+            const form = event.target;
+            const studentName = form.studentName.value.trim();
+            const department = form.department.value;
+            const stage = form.stage.value;
+            const studyType = form.studyType.value;
+            const content = form.content.value.trim();
+
+            if (!studentName || !department || !stage || !studyType || !content) {
+                showToast('يرجى تعبئة جميع الحقول المطلوبة بدقة.', 'error');
+                return;
+            }
+
+            const ticketId = 'TK-' + Math.floor(10000 + Math.random() * 90000);
+            const now = new Date().toISOString();
+
+            const newTicket = {
+                id: ticketId,
+                studentId: session.id,
+                studentName,
+                studentEmail: session.email,
+                department,
+                stage,
+                studyType,
+                subject: content.length > 50 ? content.substring(0, 50) + '...' : content,
+                status: 'new',
+                createdAt: now,
+                updatedAt: now
+            };
+
+            const tickets = DB.getTickets();
+            tickets.unshift(newTicket);
+            DB.saveTickets(tickets);
+
+            // Save Initial Message
+            const messages = DB.getMessages();
+            messages.push({
+                id: 'msg_' + Date.now(),
+                ticketId: ticketId,
+                senderId: session.id,
+                senderName: studentName,
+                senderRole: 'student',
+                text: content,
+                createdAt: now,
+                readByRecipient: false
+            });
+            DB.saveMessages(messages);
+
+            // Send notification to Admin
+            const adminUser = DB.getUsers().find(u => u.role === 'admin');
+            if (adminUser) {
+                broadcastNotification(
+                    adminUser.id,
+                    'طلب / شكوى جديدة',
+                    `ورد طلب جديد (#${ticketId}) من الطالب ${studentName} - ${department}`,
+                    ticketId
+                );
+            }
+
+            // Render Success view strictly as requested
+            renderSuccessSubmission(newTicket);
+        }
+
+        function handleSendReply(ticketId, event) {
+            event.preventDefault();
+            const session = DB.getSession();
+            if (!session) return;
+
+            const input = document.getElementById('reply-input');
+            const text = input.value.trim();
+            if (!text) return;
+
+            const tickets = DB.getTickets();
+            const ticket = tickets.find(t => t.id === ticketId);
+            if (!ticket) return;
+
+            const now = new Date().toISOString();
+            const messages = DB.getMessages();
+
+            messages.push({
+                id: 'msg_' + Date.now(),
+                ticketId: ticketId,
+                senderId: session.id,
+                senderName: session.name,
+                senderRole: session.role,
+                text: text,
+                createdAt: now,
+                readByRecipient: false
+            });
+            DB.saveMessages(messages);
+
+            // Update Ticket Status
+            if (session.role === 'admin') {
+                ticket.status = 'answered';
+                ticket.updatedAt = now;
+                broadcastNotification(
+                    ticket.studentId,
+                    'رد جديد من الأستاذ المسؤول',
+                    `قام الأستاذ م. مصطفى جاسم بالرد على طلبك رقم ${ticket.id}`,
+                    ticket.id
+                );
+            } else {
+                if (ticket.status === 'answered' || ticket.status === 'closed') {
+                    ticket.status = 'in_progress';
+                }
+                ticket.updatedAt = now;
+                const admin = DB.getUsers().find(u => u.role === 'admin');
+                if (admin) {
+                    broadcastNotification(
+                        admin.id,
+                        'تعقيب جديد من الطالب',
+                        `أضاف الطالب ${ticket.studentName} تعقيباً على الطلب ${ticket.id}`,
+                        ticket.id
+                    );
+                }
+            }
+
+            DB.saveTickets(tickets);
+            input.value = '';
+            showToast('تم إرسال الرد بنجاح', 'success');
+            renderTicketDetailView(ticketId);
+        }
+
+        function updateTicketStatus(ticketId, newStatus) {
+            const session = DB.getSession();
+            if (!session || session.role !== 'admin') return;
+
+            const tickets = DB.getTickets();
+            const ticket = tickets.find(t => t.id === ticketId);
+            if (ticket) {
+                ticket.status = newStatus;
+                ticket.updatedAt = new Date().toISOString();
+                DB.saveTickets(tickets);
+                showToast(`تم تحديث حالة الطلب إلى: ${getStatusBadge(newStatus).label}`, 'success');
+                renderTicketDetailView(ticketId);
+            }
+        }
+
+        function toggleUserStatus(userId) {
+            const session = DB.getSession();
+            if (!session || session.role !== 'admin') return;
+
+            const users = DB.getUsers();
+            const user = users.find(u => u.id === userId);
+            if (user && user.role !== 'admin') {
+                user.status = user.status === 'active' ? 'disabled' : 'active';
+                DB.saveUsers(users);
+                showToast(`تم ${user.status === 'active' ? 'تنشيط' : 'تعطيل'} حساب الطالب بنجاح`, 'info');
+                renderAdminUsersView();
+            }
+        }
+
+        // ================= HELPERS & UI COMPONENT BUILDERS =================
+        function getStatusBadge(status) {
+            switch(status) {
+                case 'new':
+                    return { label: 'جديد', class: 'bg-emerald-100 text-emerald-800 border-emerald-300' };
+                case 'in_progress':
+                    return { label: 'قيد المعالجة', class: 'bg-amber-100 text-amber-800 border-amber-300' };
+                case 'answered':
+                    return { label: 'تمت الإجابة', class: 'bg-blue-100 text-blue-800 border-blue-300' };
+                case 'closed':
+                    return { label: 'مغلق', class: 'bg-slate-200 text-slate-700 border-slate-400' };
+                default:
+                    return { label: 'غير محدد', class: 'bg-slate-100 text-slate-800' };
+            }
+        }
+
+        function formatDate(isoStr) {
+            try {
+                const date = new Date(isoStr);
+                return date.toLocaleDateString('ar-IQ', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            } catch(e) {
+                return isoStr;
+            }
+        }
+
+        // ================= VIEW RENDERERS =================
+        function renderView() {
+            const root = document.getElementById('app-root');
+            const session = DB.getSession();
+
+            // Guard routes
+            if (['admin-dashboard', 'admin-tickets', 'admin-users'].includes(currentState.view)) {
+                if (!session || session.role !== 'admin') {
+                    showToast('هذه الصفحة مخصصة للأستاذ المسؤول فقط.', 'error');
+                    navigateTo('login');
+                    return;
+                }
+            }
+
+            if (['student-dashboard', 'submit-ticket', 'student-tickets'].includes(currentState.view)) {
+                if (!session) {
+                    showToast('يرجى تسجيل الدخول للوصول إلى لوحة التحكم.', 'info');
+                    navigateTo('login');
+                    return;
+                }
+            }
+
+            switch(currentState.view) {
+                case 'home':
+                    renderHomeView();
+                    break;
+                case 'about':
+                    renderAboutView();
+                    break;
+                case 'login':
+                    renderLoginView();
+                    break;
+                case 'register':
+                    renderRegisterView();
+                    break;
+                case 'submit-ticket':
+                    renderSubmitTicketView();
+                    break;
+                case 'student-dashboard':
+                    renderStudentDashboardView();
+                    break;
+                case 'student-tickets':
+                    renderStudentTicketsListView();
+                    break;
+                case 'ticket-detail':
+                    renderTicketDetailView(currentState.ticketId);
+                    break;
+                case 'admin-dashboard':
+                    renderAdminDashboardView();
+                    break;
+                case 'admin-tickets':
+                    renderAdminTicketsView();
+                    break;
+                case 'admin-users':
+                    renderAdminUsersView();
+                    break;
+                case 'notifications':
+                    renderNotificationsView();
+                    break;
+                default:
+                    renderHomeView();
+            }
+        }
+
+        // 1. HOME VIEW
+        function renderHomeView() {
+            const session = DB.getSession();
+            const root = document.getElementById('app-root');
+            root.innerHTML = `
+                <!-- Hero Section with Academic Pattern & Gradients -->
+                <div class="relative academic-pattern text-white py-16 md:py-24 px-4 overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/90 to-brand-blue/80"></div>
+                    <div class="relative max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+                        
+                        <div class="md:w-3/5 text-center md:text-right space-y-6">
+                            <div class="inline-flex items-center gap-2 bg-brand-gold/15 text-brand-gold border border-brand-gold/30 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+                                <i class="fa-solid fa-star"></i> المنصة المعتمدة للكلية التقنية الكوت
+                            </div>
+                            <h1 class="text-3xl md:text-5xl font-extrabold leading-snug">
+                                منصة التواصل والدعم الفني لاستقبال استفسارات الطلبة وملاحظاتهم وشكاواهم
+                            </h1>
+                            <p class="text-slate-300 text-base md:text-lg leading-relaxed max-w-2xl">
+                                مساحتكم الأكاديمية الآمنة لتقديم كافة الاستفسارات، الشكاوى، والملاحظات التقنية والدراسية بإشراف ومتابعة مباشرة من قبل 
+                                <strong class="text-white underline decoration-brand-gold">الأستاذ م. مصطفى جاسم محمد</strong>.
+                            </p>
+
+                            <!-- Primary CTA Buttons -->
+                            <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
+                                <button onclick="navigateTo('${session ? 'submit-ticket' : 'login'}')" class="bg-brand-gold hover:bg-amber-500 text-brand-navy font-extrabold px-7 py-3.5 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                    تقديم شكوى أو استفسار
+                                </button>
+                                
+                                ${!session ? `
+                                    <button onclick="navigateTo('register')" class="bg-brand-accent hover:bg-sky-600 text-white font-bold px-6 py-3.5 rounded-xl shadow-md transition flex items-center gap-2">
+                                        <i class="fa-solid fa-user-plus"></i>
+                                        إنشاء حساب طالب
+                                    </button>
+                                    <button onclick="navigateTo('login')" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold px-6 py-3.5 rounded-xl transition flex items-center gap-2">
+                                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                                        تسجيل الدخول
+                                    </button>
+                                ` : `
+                                    <button onclick="navigateTo('${session.role === 'admin' ? 'admin-dashboard' : 'student-tickets'}')" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold px-6 py-3.5 rounded-xl transition flex items-center gap-2">
+                                        <i class="fa-solid fa-list-check"></i>
+                                        متابعة طلباتي
+                                    </button>
+                                `}
+                            </div>
+                        </div>
+
+                        <!-- Hero Feature Card -->
+                        <div class="md:w-2/5 w-full">
+                            <div class="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-white/20 shadow-2xl text-white relative">
+                                <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-brand-accent to-brand-gold flex items-center justify-center text-2xl text-white mb-6 shadow-md">
+                                    <i class="fa-solid fa-user-tie"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">إشراف وتواصل مباشر</h3>
+                                <p class="text-slate-200 text-sm leading-relaxed mb-6">
+                                    تدار كافة الطلبات بسرية تامة من قبل مسؤول الدعم التقني لضمان حل المشاكل وتسهيل المسيرة التعليمية لكافة الأقسام.
+                                </p>
+                                <div class="bg-white/10 rounded-xl p-3.5 border border-white/10 flex items-center justify-between text-xs">
+                                    <span>المسؤول التقني:</span>
+                                    <span class="font-bold text-brand-gold">م. مصطفى جاسم محمد</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Academic Departments Grid -->
+                <div class="max-w-7xl mx-auto px-4 py-16">
+                    <div class="text-center max-w-3xl mx-auto mb-12">
+                        <span class="text-brand-accent font-bold text-sm bg-brand-accent/10 px-3 py-1 rounded-full">الأقسام المعتمدة</span>
+                        <h2 class="text-2xl md:text-3xl font-bold text-brand-navy mt-2">الأقسام العلمية في الكلية التقنية الكوت</h2>
+                        <p class="text-slate-600 text-sm mt-2">توفر المنصة قنوات دعم مخصصة لطلبة المراحل الصباحية والمسائية في الأقسام التالية</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        ${DEPARTMENTS.map((dept, index) => {
+                            const icons = ['fa-heart-pulse', 'fa-calculator', 'fa-gears', 'fa-gas-pump'];
+                            const colors = ['from-emerald-500 to-teal-700', 'from-blue-600 to-indigo-800', 'from-amber-500 to-orange-700', 'from-rose-500 to-red-800'];
+                            return `
+                                <div class="glass-card rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200/80 group">
+                                    <div class="w-12 h-12 rounded-xl bg-gradient-to-tr ${colors[index]} text-white flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                                        <i class="fa-solid ${icons[index]}"></i>
+                                    </div>
+                                    <h3 class="font-bold text-brand-navy text-base mb-2 group-hover:text-brand-accent transition">${dept}</h3>
+                                    <p class="text-xs text-slate-500 leading-relaxed">المرحلة الأولى والثانية | الدراسات الصباحية والمسائية</p>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+
+                <!-- Quick Features -->
+                <div class="bg-slate-100 py-16 border-y border-slate-200">
+                    <div class="max-w-7xl mx-auto px-4">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex gap-4">
+                                <div class="text-brand-accent text-3xl shrink-0"><i class="fa-solid fa-lock"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-brand-navy mb-1">خصوصية وسرية تامة</h4>
+                                    <p class="text-xs text-slate-600 leading-relaxed">لا يمكن لأي طرف الاطلاع على بياناتك أو شكواك سوى الأستاذ المسؤول بشكل مباشر ومحمي.</p>
+                                </div>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex gap-4">
+                                <div class="text-brand-gold text-3xl shrink-0"><i class="fa-solid fa-comments"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-brand-navy mb-1">نظام محادثات وردود حية</h4>
+                                    <p class="text-xs text-slate-600 leading-relaxed">إمكانية التفاعل مع رد الأستاذ ومتابعة التحديثات خطوة بخطوة حتى إغلاق الطلب.</p>
+                                </div>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex gap-4">
+                                <div class="text-emerald-500 text-3xl shrink-0"><i class="fa-solid fa-bolt"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-brand-navy mb-1">إشعارات فورية</h4>
+                                    <p class="text-xs text-slate-600 leading-relaxed">تنبيهات فورية عند وصول أي رد جديد أو تغيير حالة الشكوى المقدمة.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 2. ABOUT VIEW
+        function renderAboutView() {
+            const root = document.getElementById('app-root');
+            root.innerHTML = `
+                <div class="max-w-4xl mx-auto px-4 py-12">
+                    <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-8 md:p-12 space-y-8">
+                        <div class="text-center space-y-4">
+                            <div class="w-20 h-20 mx-auto rounded-3xl bg-brand-navy text-brand-gold flex items-center justify-center text-3xl shadow-xl">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <h1 class="text-3xl font-extrabold text-brand-navy">عن منصة الدعم التقني</h1>
+                            <p class="text-slate-600 text-sm max-w-xl mx-auto">
+                                المنصة الرقمية الموحدة لاستقبال وتوثيق ومعالجة جميع الملاحظات والشكاوى لطلبة الكلية التقنية الكوت.
+                            </p>
+                        </div>
+
+                        <div class="border-t border-slate-100 pt-8 space-y-6 text-sm text-slate-700 leading-relaxed">
+                            <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                                <h3 class="text-base font-bold text-brand-navy mb-2 flex items-center gap-2">
+                                    <i class="fa-solid fa-bullseye text-brand-accent"></i> الهدف من المنصة
+                                </h3>
+                                <p>
+                                    تسهيل آلية التواصل بين الطلاب والجهة المسؤولة عن الدعم الفني، وتقديم حلول جذرية للمشاكل المتعلقة بالحسابات، المنصات الإلكترونية، الجداول، وأي معوقات تقنية تواجه الطالب خلال مسيرته الدراسية.
+                                </p>
+                            </div>
+
+                            <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                                <h3 class="text-base font-bold text-brand-navy mb-2 flex items-center gap-2">
+                                    <i class="fa-solid fa-user-tie text-brand-gold"></i> المشرف والمطور
+                                </h3>
+                                <p class="mb-3">
+                                    تم تصميم وبرمجة المنصة وإدارتها بإشراف: <strong>م. مصطفى جاسم محمد</strong> لخدمة طلبتنا الأعزاء وتوفير بيئة تعليمية ذكية ومتطورة.
+                                </p>
+                                <a href="https://wa.me/9647815561725" target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 text-white font-bold px-4 py-2 rounded-xl text-xs hover:bg-emerald-700 transition">
+                                    <i class="fa-brands fa-whatsapp text-base"></i> التواصل المباشر عبر واتساب: 07815561725
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 3. LOGIN VIEW
+        function renderLoginView() {
+            const root = document.getElementById('app-root');
+            root.innerHTML = `
+                <div class="max-w-md mx-auto px-4 py-12">
+                    <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-8 space-y-6">
+                        <div class="text-center space-y-2">
+                            <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-navy text-brand-gold flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-right-to-bracket"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold text-brand-navy">تسجيل الدخول</h2>
+                            <p class="text-xs text-slate-500">أدخل بيانات حسابك للمتابعة أو تقديم الطلبات</p>
+                        </div>
+
+                        <form onsubmit="handleLogin(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">البريد الإلكتروني</label>
+                                <div class="relative">
+                                    <input type="email" name="email" required placeholder="example@kut.com" 
+                                           class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent text-sm pl-10">
+                                    <i class="fa-solid fa-envelope absolute left-3 top-3.5 text-slate-400"></i>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">كلمة المرور</label>
+                                <div class="relative">
+                                    <input type="password" name="password" required placeholder="••••••••" 
+                                           class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent text-sm pl-10">
+                                    <i class="fa-solid fa-lock absolute left-3 top-3.5 text-slate-400"></i>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="w-full bg-brand-navy hover:bg-brand-blue text-white font-bold py-3.5 rounded-xl shadow-md transition text-sm flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-arrow-right-to-bracket"></i> دخول إلى المنصة
+                            </button>
+                        </form>
+
+                        <div class="text-center pt-4 border-t border-slate-100 space-y-3">
+                            <p class="text-xs text-slate-600">
+                                ليس لديك حساب طالب حتى الآن؟ 
+                                <button onclick="navigateTo('register')" class="text-brand-accent font-bold hover:underline">إنشاء حساب جديد</button>
+                            </p>
+                            <div class="bg-amber-50 border border-amber-200 p-2.5 rounded-xl text-[11px] text-amber-800 text-right">
+                                <i class="fa-solid fa-circle-info ml-1 text-amber-600"></i> 
+                                لحساب المشرف الإداري: استخدم بريد الأستاذ المسؤول المصرح به.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 4. REGISTER VIEW
+        function renderRegisterView() {
+            const root = document.getElementById('app-root');
+            root.innerHTML = `
+                <div class="max-w-xl mx-auto px-4 py-12">
+                    <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-8 space-y-6">
+                        <div class="text-center space-y-2">
+                            <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-accent text-white flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-user-plus"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold text-brand-navy">إنشاء حساب طالب جديد</h2>
+                            <p class="text-xs text-slate-500">سجل بياناتك للتمكن من رفع الشكاوى ومتابعة ردود الأستاذ المسؤول</p>
+                        </div>
+
+                        <form onsubmit="handleRegister(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">الاسم الكامل للطالب <span class="text-rose-500">*</span></label>
+                                <input type="text" name="name" required placeholder="اكتب اسمك الثلاثي أو الرباعي" 
+                                       class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-accent text-sm">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">البريد الإلكتروني <span class="text-rose-500">*</span></label>
+                                <input type="email" name="email" required placeholder="student@example.com" 
+                                       class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-accent text-sm">
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">كلمة المرور <span class="text-rose-500">*</span></label>
+                                    <input type="password" name="password" minlength="6" required placeholder="••••••••" 
+                                           class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-accent text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">تأكيد كلمة المرور <span class="text-rose-500">*</span></label>
+                                    <input type="password" name="confirmPassword" minlength="6" required placeholder="••••••••" 
+                                           class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-accent text-sm">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">القسم العلمي <span class="text-rose-500">*</span></label>
+                                <select name="department" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-accent text-sm bg-white">
+                                    ${DEPARTMENTS.map(d => `<option value="${d}">${d}</option>`).join('')}
+                                </select>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">المرحلة الدراسية <span class="text-rose-500">*</span></label>
+                                    <select name="stage" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-accent text-sm bg-white">
+                                        <option value="المرحلة الأولى">المرحلة الأولى</option>
+                                        <option value="المرحلة الثانية">المرحلة الثانية</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">نوع الدراسة <span class="text-rose-500">*</span></label>
+                                    <select name="studyType" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-accent text-sm bg-white">
+                                        <option value="صباحي">صباحي</option>
+                                        <option value="مسائي">مسائي</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="w-full bg-brand-accent hover:bg-sky-600 text-white font-bold py-3.5 rounded-xl shadow-md transition text-sm flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-user-check"></i> تأكيد وإنشاء الحساب
+                            </button>
+                        </form>
+
+                        <div class="text-center pt-4 border-t border-slate-100">
+                            <p class="text-xs text-slate-600">
+                                لديك حساب بالفعل؟ 
+                                <button onclick="navigateTo('login')" class="text-brand-navy font-bold hover:underline">تسجيل الدخول</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 5. SUBMIT COMPLAINT/INQUIRY VIEW
+        function renderSubmitTicketView() {
+            const session = DB.getSession();
+            const root = document.getElementById('app-root');
+            root.innerHTML = `
+                <div class="max-w-3xl mx-auto px-4 py-12">
+                    <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-8 md:p-10 space-y-6">
+                        <div class="border-b border-slate-100 pb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-2xl bg-brand-accent text-white flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                </div>
+                                <div>
+                                    <h2 class="text-2xl font-bold text-brand-navy">تقديم شكوى أو استفسار</h2>
+                                    <p class="text-xs text-slate-500">سيتم إرسال الطلب مباشرة إلى الأستاذ المسؤول م. مصطفى جاسم محمد</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form onsubmit="handleTicketSubmission(event)" class="space-y-6">
+                            <!-- 1. Student Name -->
+                            <div>
+                                <label class="block text-sm font-bold text-slate-800 mb-1.5">
+                                    1. اسم الطالب الكامل <span class="text-rose-500">*</span>
+                                </label>
+                                <input type="text" name="studentName" required value="${session?.name || ''}" placeholder="اكتب اسمك الثلاثي أو الرباعي" 
+                                       class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-accent text-sm">
+                            </div>
+
+                            <!-- 2. Academic Department -->
+                            <div>
+                                <label class="block text-sm font-bold text-slate-800 mb-1.5">
+                                    2. القسم العلمي <span class="text-rose-500">*</span>
+                                </label>
+                                <select name="department" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-accent text-sm bg-white">
+                                    ${DEPARTMENTS.map(d => `<option value="${d}" ${session?.department === d ? 'selected' : ''}>${d}</option>`).join('')}
+                                </select>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- 3. Stage -->
+                                <div>
+                                    <label class="block text-sm font-bold text-slate-800 mb-1.5">
+                                        3. المرحلة الدراسية <span class="text-rose-500">*</span>
+                                    </label>
+                                    <select name="stage" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-accent text-sm bg-white">
+                                        <option value="المرحلة الأولى" ${session?.stage === 'المرحلة الأولى' ? 'selected' : ''}>المرحلة الأولى</option>
+                                        <option value="المرحلة الثانية" ${session?.stage === 'المرحلة الثانية' ? 'selected' : ''}>المرحلة الثانية</option>
+                                    </select>
+                                </div>
+
+                                <!-- 4. Study Type -->
+                                <div>
+                                    <label class="block text-sm font-bold text-slate-800 mb-1.5">
+                                        4. نوع الدراسة <span class="text-rose-500">*</span>
+                                    </label>
+                                    <div class="grid grid-cols-2 gap-3 pt-1">
+                                        <label class="flex items-center justify-center p-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50 transition has-[:checked]:border-brand-accent has-[:checked]:bg-brand-accent/10">
+                                            <input type="radio" name="studyType" value="صباحي" class="ml-2 accent-brand-accent" ${session?.studyType !== 'مسائي' ? 'checked' : ''}>
+                                            <span class="text-xs font-bold text-slate-800">صباحي</span>
+                                        </label>
+                                        <label class="flex items-center justify-center p-3 rounded-xl border border-slate-300 cursor-pointer hover:bg-slate-50 transition has-[:checked]:border-brand-accent has-[:checked]:bg-brand-accent/10">
+                                            <input type="radio" name="studyType" value="مسائي" class="ml-2 accent-brand-accent" ${session?.studyType === 'مسائي' ? 'checked' : ''}>
+                                            <span class="text-xs font-bold text-slate-800">مسائي</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 5. Complaint Body -->
+                            <div>
+                                <label class="block text-sm font-bold text-slate-800 mb-1.5">
+                                    5. تقديم مشكلتك أو اطرح سؤالك <span class="text-rose-500">*</span>
+                                </label>
+                                <textarea name="content" required rows="6" 
+                                          placeholder="يرجى كتابة مشكلتك أو استفسارك بالتفصيل، وسيتم الاطلاع عليه من قبل الأستاذ المسؤول"
+                                          class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-accent text-sm leading-relaxed"></textarea>
+                                <p class="text-xs text-slate-500 mt-1">«يرجى كتابة مشكلتك أو استفسارك بالتفصيل، وسيتم الاطلاع عليه من قبل الأستاذ المسؤول».</p>
+                            </div>
+
+                            <!-- 6. Submit Button -->
+                            <button type="submit" class="w-full bg-brand-navy hover:bg-brand-blue text-white font-extrabold py-4 rounded-xl shadow-lg transition text-base flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-paper-plane"></i> إرسال الطلب
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 5.1 SUCCESS CONFIRMATION VIEW (STRICT REQUIREMENT)
+        function renderSuccessSubmission(ticket) {
+            const root = document.getElementById('app-root');
+            root.innerHTML = `
+                <div class="max-w-2xl mx-auto px-4 py-16">
+                    <div class="bg-white rounded-3xl shadow-2xl border-2 border-emerald-500 p-8 md:p-12 text-center space-y-6 animate-fade-in">
+                        <div class="w-24 h-24 mx-auto bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-5xl shadow-inner animate-bounce">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+
+                        <div class="space-y-2">
+                            <h2 class="text-3xl font-extrabold text-emerald-700">تم تقديم طلبك بنجاح</h2>
+                            <p class="text-sm text-slate-600 max-w-md mx-auto">
+                                تم استلام شكواك / استفسارك وحفظه بصورة رسمية في قاعدة البيانات وسيتم الرد عليه قريباً.
+                            </p>
+                        </div>
+
+                        <!-- Ticket Summary Card -->
+                        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 text-right space-y-3">
+                            <div class="flex justify-between items-center pb-2 border-b border-slate-200">
+                                <span class="text-xs text-slate-500">رقم الطلب المرجعي:</span>
+                                <span class="font-mono font-bold text-base text-brand-navy">${ticket.id}</span>
+                            </div>
+                            <div class="flex justify-between items-center pb-2 border-b border-slate-200">
+                                <span class="text-xs text-slate-500">تاريخ ووقت التقديم:</span>
+                                <span class="text-xs font-bold text-slate-700">${formatDate(ticket.createdAt)}</span>
+                            </div>
+                            <div class="flex justify-between items-center pb-2 border-b border-slate-200">
+                                <span class="text-xs text-slate-500">القسم والمرحلة:</span>
+                                <span class="text-xs font-bold text-slate-700">${ticket.department} (${ticket.stage} - ${ticket.studyType})</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-slate-500">حالة الطلب:</span>
+                                <span class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-100 text-emerald-800">جديد</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                            <button onclick="navigateTo('ticket-detail', { ticketId: '${ticket.id}' })" class="w-full sm:w-auto bg-brand-navy text-white font-bold px-6 py-3.5 rounded-xl hover:bg-brand-blue transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-comments"></i> عرض تفاصيل الطلب والمحادثة
+                            </button>
+                            <button onclick="navigateTo('student-tickets')" class="w-full sm:w-auto bg-slate-100 text-slate-700 font-bold px-6 py-3.5 rounded-xl hover:bg-slate-200 transition">
+                                العودة لقائمة طلباتي
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 6. STUDENT DASHBOARD
+        function renderStudentDashboardView() {
+            const session = DB.getSession();
+            const tickets = DB.getTickets().filter(t => t.studentId === session.id);
+            const root = document.getElementById('app-root');
+
+            const total = tickets.length;
+            const answered = tickets.filter(t => t.status === 'answered').length;
+            const inProgress = tickets.filter(t => t.status === 'in_progress').length;
+
+            root.innerHTML = `
+                <div class="max-w-7xl mx-auto px-4 py-12 space-y-8">
+                    <!-- Top Student Card -->
+                    <div class="bg-gradient-to-r from-brand-navy to-brand-blue text-white rounded-3xl p-6 md:p-8 shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-3xl text-brand-gold">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-2xl font-bold">${session.name}</h2>
+                                <p class="text-xs text-slate-300">${session.email} | ${session.department || 'الكلية التقنية الكوت'}</p>
+                            </div>
+                        </div>
+                        <button onclick="navigateTo('submit-ticket')" class="bg-brand-gold hover:bg-amber-500 text-brand-navy font-bold px-5 py-3 rounded-xl shadow transition flex items-center gap-2 text-sm">
+                            <i class="fa-solid fa-plus"></i> تقديم شكوى جديدة
+                        </button>
+                    </div>
+
+                    <!-- Stats Row -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                            <div>
+                                <p class="text-xs font-bold text-slate-500">إجمالي الطلبات</p>
+                                <p class="text-3xl font-extrabold text-brand-navy mt-1">${total}</p>
+                            </div>
+                            <div class="w-12 h-12 rounded-xl bg-slate-100 text-brand-navy flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-folder"></i>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                            <div>
+                                <p class="text-xs font-bold text-slate-500">تمت الإجابة عنها</p>
+                                <p class="text-3xl font-extrabold text-blue-600 mt-1">${answered}</p>
+                            </div>
+                            <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-check-double"></i>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                            <div>
+                                <p class="text-xs font-bold text-slate-500">قيد المعالجة والمتابعة</p>
+                                <p class="text-3xl font-extrabold text-amber-600 mt-1">${inProgress}</p>
+                            </div>
+                            <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-spinner"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Tickets Table -->
+                    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="p-6 border-b border-slate-100 flex justify-between items-center">
+                            <h3 class="font-bold text-brand-navy text-lg">آخر الاستفسارات والشكاوى</h3>
+                            <button onclick="navigateTo('student-tickets')" class="text-xs font-bold text-brand-accent hover:underline">عرض الكل (${total})</button>
+                        </div>
+
+                        ${tickets.length === 0 ? `
+                            <div class="p-12 text-center text-slate-400 space-y-3">
+                                <i class="fa-solid fa-box-open text-4xl"></i>
+                                <p class="text-sm">لم تقدم أي طلب أو شكوى حتى الآن.</p>
+                                <button onclick="navigateTo('submit-ticket')" class="text-xs text-brand-accent font-bold underline">تقديم أول طلب الآن</button>
+                            </div>
+                        ` : `
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-right text-xs">
+                                    <thead class="bg-slate-50 text-slate-600 border-b border-slate-200">
+                                        <tr>
+                                            <th class="p-4">رقم الطلب</th>
+                                            <th class="p-4">موضوع الشكوى / الاستفسار</th>
+                                            <th class="p-4">تاريخ التقديم</th>
+                                            <th class="p-4">الحالة</th>
+                                            <th class="p-4">الإجراء</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-100">
+                                        ${tickets.slice(0, 5).map(ticket => {
+                                            const badge = getStatusBadge(ticket.status);
+                                            return `
+                                                <tr class="hover:bg-slate-50/80 transition">
+                                                    <td class="p-4 font-mono font-bold text-brand-navy">${ticket.id}</td>
+                                                    <td class="p-4 font-semibold text-slate-800 max-w-xs truncate">${ticket.subject}</td>
+                                                    <td class="p-4 text-slate-500">${formatDate(ticket.createdAt)}</td>
+                                                    <td class="p-4">
+                                                        <span class="px-2.5 py-1 rounded-full font-bold border text-[10px] ${badge.class}">${badge.label}</span>
+                                                    </td>
+                                                    <td class="p-4">
+                                                        <button onclick="navigateTo('ticket-detail', { ticketId: '${ticket.id}' })" class="bg-slate-100 hover:bg-brand-accent hover:text-white text-slate-700 px-3 py-1.5 rounded-lg transition font-bold flex items-center gap-1">
+                                                            <i class="fa-solid fa-eye"></i> عرض المحادثة
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            `;
+                                        }).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
+                        `}
+                    </div>
+                </div>
+            `;
+        }
+
+        // 7. STUDENT TICKETS LIST
+        function renderStudentTicketsListView() {
+            const session = DB.getSession();
+            const tickets = DB.getTickets().filter(t => t.studentId === session.id);
+            const root = document.getElementById('app-root');
+
+            root.innerHTML = `
+                <div class="max-w-7xl mx-auto px-4 py-12 space-y-6">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                        <div>
+                            <h2 class="text-2xl font-bold text-brand-navy">طلباتي السابقة</h2>
+                            <p class="text-xs text-slate-500">سجل وتفاصيل كافة الشكاوى والاستفسارات المقدمة من قبلك</p>
+                        </div>
+                        <button onclick="navigateTo('submit-ticket')" class="bg-brand-accent hover:bg-sky-600 text-white font-bold px-4 py-2.5 rounded-xl transition text-xs flex items-center gap-2">
+                            <i class="fa-solid fa-plus"></i> تقديم طلب جديد
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-4">
+                        ${tickets.length === 0 ? `
+                            <div class="bg-white p-12 text-center rounded-3xl border border-slate-200 text-slate-400">
+                                <i class="fa-solid fa-folder-open text-4xl mb-2"></i>
+                                <p>لا توجد أي طلبات مسجلة.</p>
+                            </div>
+                        ` : tickets.map(ticket => {
+                            const badge = getStatusBadge(ticket.status);
+                            return `
+                                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4 hover:border-brand-accent transition">
+                                    <div class="space-y-2">
+                                        <div class="flex items-center gap-3">
+                                            <span class="font-mono font-bold text-brand-navy text-sm">${ticket.id}</span>
+                                            <span class="px-2.5 py-0.5 rounded-full font-bold border text-[10px] ${badge.class}">${badge.label}</span>
+                                            <span class="text-xs text-slate-400"><i class="fa-solid fa-clock ml-1"></i>${formatDate(ticket.createdAt)}</span>
+                                        </div>
+                                        <h3 class="font-bold text-slate-800 text-base">${ticket.subject}</h3>
+                                        <p class="text-xs text-slate-500">${ticket.department} | ${ticket.stage} (${ticket.studyType})</p>
+                                    </div>
+                                    <button onclick="navigateTo('ticket-detail', { ticketId: '${ticket.id}' })" class="w-full md:w-auto bg-brand-navy hover:bg-brand-blue text-white px-5 py-2.5 rounded-xl font-bold text-xs transition flex items-center justify-center gap-2">
+                                        <i class="fa-solid fa-comments"></i> عرض المحادثة والردود
+                                    </button>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // 8. TICKET DETAIL & PRIVATE MESSAGING VIEW (STUDENT & ADMIN)
+        function renderTicketDetailView(ticketId) {
+            const session = DB.getSession();
+            const tickets = DB.getTickets();
+            const ticket = tickets.find(t => t.id === ticketId);
+
+            if (!ticket) {
+                showToast('لم يتم العثور على الطلب المطلوب.', 'error');
+                navigateTo(session?.role === 'admin' ? 'admin-tickets' : 'student-dashboard');
+                return;
+            }
+
+            // Security Check: Student can only see their own tickets
+            if (session.role !== 'admin' && ticket.studentId !== session.id) {
+                showToast('غير مصرح لك بالاطلاع على هذا الطلب!', 'error');
+                navigateTo('student-dashboard');
+                return;
+            }
+
+            const messages = DB.getMessages().filter(m => m.ticketId === ticketId);
+            const badge = getStatusBadge(ticket.status);
+            const root = document.getElementById('app-root');
+
+            root.innerHTML = `
+                <div class="max-w-5xl mx-auto px-4 py-12 space-y-6">
+                    <!-- Top Bar Actions -->
+                    <div class="flex items-center justify-between">
+                        <button onclick="navigateTo('${session.role === 'admin' ? 'admin-tickets' : 'student-tickets'}')" class="text-xs font-bold text-slate-600 hover:text-brand-navy flex items-center gap-1.5">
+                            <i class="fa-solid fa-arrow-right"></i> العودة للقائمة
+                        </button>
+                        <span class="font-mono font-bold text-sm bg-slate-200 text-slate-700 px-3 py-1 rounded-lg">رقم الطلب: ${ticket.id}</span>
+                    </div>
+
+                    <!-- Ticket Header Summary Card -->
+                    <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm space-y-4">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-slate-100">
+                            <div>
+                                <div class="flex items-center gap-3 mb-1">
+                                    <h1 class="text-xl font-bold text-brand-navy">${ticket.subject}</h1>
+                                    <span class="px-3 py-1 rounded-full font-bold border text-xs ${badge.class}">${badge.label}</span>
+                                </div>
+                                <p class="text-xs text-slate-500">تاريخ الإرسال: ${formatDate(ticket.createdAt)}</p>
+                            </div>
+
+                            <!-- Admin Controls for Ticket Status -->
+                            ${session.role === 'admin' ? `
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs font-bold text-slate-600">تغيير الحالة:</span>
+                                    <select onchange="updateTicketStatus('${ticket.id}', this.value)" class="text-xs font-bold border border-slate-300 rounded-lg p-2 bg-slate-50 focus:ring-2 focus:ring-brand-accent">
+                                        <option value="new" ${ticket.status === 'new' ? 'selected' : ''}>جديد</option>
+                                        <option value="in_progress" ${ticket.status === 'in_progress' ? 'selected' : ''}>قيد المعالجة</option>
+                                        <option value="answered" ${ticket.status === 'answered' ? 'selected' : ''}>تمت الإجابة</option>
+                                        <option value="closed" ${ticket.status === 'closed' ? 'selected' : ''}>مغلق</option>
+                                    </select>
+                                </div>
+                            ` : ''}
+                        </div>
+
+                        <!-- Student Metadata Info Box -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <div>
+                                <span class="text-slate-500 block">اسم الطالب:</span>
+                                <span class="font-bold text-slate-800">${ticket.studentName}</span>
+                            </div>
+                            <div>
+                                <span class="text-slate-500 block">القسم العلمي:</span>
+                                <span class="font-bold text-slate-800">${ticket.department}</span>
+                            </div>
+                            <div>
+                                <span class="text-slate-500 block">المرحلة والدراسة:</span>
+                                <span class="font-bold text-slate-800">${ticket.stage} (${ticket.studyType})</span>
+                            </div>
+                            <div>
+                                <span class="text-slate-500 block">البريد الإلكتروني:</span>
+                                <span class="font-bold text-slate-800">${ticket.studentEmail}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chronological Private Messaging Chat Thread -->
+                    <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm space-y-6">
+                        <h3 class="font-bold text-brand-navy text-base flex items-center gap-2 border-b border-slate-100 pb-3">
+                            <i class="fa-solid fa-comments text-brand-accent"></i> سجل المحادثة والردود الرسمية
+                        </h3>
+
+                        <div class="space-y-4 max-h-[500px] overflow-y-auto p-2 custom-scrollbar">
+                            ${messages.map(msg => {
+                                const isAdmin = msg.senderRole === 'admin';
+                                return `
+                                    <div class="flex flex-col ${isAdmin ? 'items-start' : 'items-end'}">
+                                        <div class="max-w-2xl rounded-2xl p-4 shadow-sm text-sm ${isAdmin ? 'bg-slate-100 text-slate-800 rounded-tr-none border border-slate-200' : 'bg-brand-navy text-white rounded-tl-none'}">
+                                            <div class="flex items-center gap-2 mb-1.5 text-xs ${isAdmin ? 'text-brand-accent' : 'text-brand-gold'} font-bold">
+                                                <i class="fa-solid ${isAdmin ? 'fa-user-tie' : 'fa-user-graduate'}"></i>
+                                                <span>${msg.senderName}</span>
+                                                <span class="text-[10px] text-slate-400 font-normal">(${formatDate(msg.createdAt)})</span>
+                                            </div>
+                                            <p class="leading-relaxed whitespace-pre-wrap">${msg.text}</p>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <!-- Reply Input Box -->
+                        <form onsubmit="handleSendReply('${ticket.id}', event)" class="pt-4 border-t border-slate-100 space-y-3">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">
+                                    ${session.role === 'admin' ? 'كتابة رد الأستاذ المسؤول على الطالب:' : 'إضافة تعقيب أو رد:'}
+                                </label>
+                                <textarea id="reply-input" required rows="3" placeholder="اكتب ردك هنا..." 
+                                          class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-accent text-sm"></textarea>
+                            </div>
+                            <div class="flex justify-end">
+                                <button type="submit" class="bg-brand-accent hover:bg-sky-600 text-white font-bold px-6 py-2.5 rounded-xl transition text-xs flex items-center gap-2 shadow-md">
+                                    <i class="fa-solid fa-paper-plane"></i> إرسال الرد
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 9. ADMIN DASHBOARD VIEW
+        function renderAdminDashboardView() {
+            const tickets = DB.getTickets();
+            const users = DB.getUsers();
+            const studentsCount = users.filter(u => u.role === 'student').length;
+
+            const total = tickets.length;
+            const newCount = tickets.filter(t => t.status === 'new').length;
+            const answered = tickets.filter(t => t.status === 'answered').length;
+            const inProgress = tickets.filter(t => t.status === 'in_progress').length;
+
+            const root = document.getElementById('app-root');
+            root.innerHTML = `
+                <div class="max-w-7xl mx-auto px-4 py-12 space-y-8">
+                    <!-- Admin Welcome Header -->
+                    <div class="bg-brand-navy text-white rounded-3xl p-6 md:p-8 shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 rounded-2xl bg-brand-gold text-brand-navy flex items-center justify-center text-3xl font-extrabold shadow-lg">
+                                <i class="fa-solid fa-user-shield"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h2 class="text-2xl font-bold">لوحة التحكم الإدارية</h2>
+                                    <span class="bg-emerald-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">الأستاذ المسؤول</span>
+                                </div>
+                                <p class="text-xs text-slate-300">مرحباً بك م. مصطفى جاسم محمد | إدارة واستقبال طلبات الكلية التقنية الكوت</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="navigateTo('admin-tickets')" class="bg-brand-accent hover:bg-sky-600 text-white font-bold px-4 py-2.5 rounded-xl text-xs flex items-center gap-2 shadow transition">
+                                <i class="fa-solid fa-inbox"></i> صندوق الوارد
+                            </button>
+                            <button onclick="navigateTo('admin-users')" class="bg-white/10 hover:bg-white/20 text-white font-bold px-4 py-2.5 rounded-xl text-xs flex items-center gap-2 border border-white/20 transition">
+                                <i class="fa-solid fa-users"></i> حسابات الطلاب
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Stats Cards Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                            <div>
+                                <p class="text-xs font-bold text-slate-500">إجمالي الطلبات</p>
+                                <p class="text-3xl font-extrabold text-brand-navy mt-1">${total}</p>
+                            </div>
+                            <div class="w-12 h-12 rounded-xl bg-slate-100 text-brand-navy flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-folder-tree"></i>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                            <div>
+                                <p class="text-xs font-bold text-slate-500">الطلبات الجديدة</p>
+                                <p class="text-3xl font-extrabold text-emerald-600 mt-1">${newCount}</p>
+                            </div>
+                            <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-envelope-open-text"></i>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                            <div>
+                                <p class="text-xs font-bold text-slate-500">تمت الإجابة عنها</p>
+                                <p class="text-3xl font-extrabold text-blue-600 mt-1">${answered}</p>
+                            </div>
+                            <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-check-double"></i>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                            <div>
+                                <p class="text-xs font-bold text-slate-500">الطلاب المسجلين</p>
+                                <p class="text-3xl font-extrabold text-brand-gold mt-1">${studentsCount}</p>
+                            </div>
+                            <div class="w-12 h-12 rounded-xl bg-amber-50 text-brand-gold flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Latest Incoming Tickets -->
+                    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="p-6 border-b border-slate-100 flex justify-between items-center">
+                            <h3 class="font-bold text-brand-navy text-lg">أحدث الشكاوى والاستفسارات الواردة</h3>
+                            <button onclick="navigateTo('admin-tickets')" class="text-xs font-bold text-brand-accent hover:underline">عرض جميع الطلبات</button>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-right text-xs">
+                                <thead class="bg-slate-50 text-slate-600 border-b border-slate-200">
+                                    <tr>
+                                        <th class="p-4">رقم الطلب</th>
+                                        <th class="p-4">اسم الطالب</th>
+                                        <th class="p-4">القسم العلمي</th>
+                                        <th class="p-4">المرحلة / الدراسة</th>
+                                        <th class="p-4">الحالة</th>
+                                        <th class="p-4">الإجراء</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100">
+                                    ${tickets.slice(0, 6).map(ticket => {
+                                        const badge = getStatusBadge(ticket.status);
+                                        return `
+                                            <tr class="hover:bg-slate-50/80 transition">
+                                                <td class="p-4 font-mono font-bold text-brand-navy">${ticket.id}</td>
+                                                <td class="p-4 font-bold text-slate-800">${ticket.studentName}</td>
+                                                <td class="p-4 text-slate-600">${ticket.department}</td>
+                                                <td class="p-4 text-slate-500">${ticket.stage} (${ticket.studyType})</td>
+                                                <td class="p-4">
+                                                    <span class="px-2.5 py-1 rounded-full font-bold border text-[10px] ${badge.class}">${badge.label}</span>
+                                                </td>
+                                                <td class="p-4">
+                                                    <button onclick="navigateTo('ticket-detail', { ticketId: '${ticket.id}' })" class="bg-brand-navy hover:bg-brand-blue text-white px-3 py-1.5 rounded-lg transition font-bold flex items-center gap-1">
+                                                        <i class="fa-solid fa-reply"></i> فتح والرد
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        `;
+                                    }).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 10. ADMIN INBOX & FILTERING VIEW
+        function renderAdminTicketsView() {
+            let tickets = DB.getTickets();
+            const root = document.getElementById('app-root');
+
+            // Apply Filters
+            const filterDept = currentState.filterDept || 'all';
+            const filterStatus = currentState.filterStatus || 'all';
+            const search = currentState.searchQuery || '';
+
+            if (filterDept !== 'all') tickets = tickets.filter(t => t.department === filterDept);
+            if (filterStatus !== 'all') tickets = tickets.filter(t => t.status === filterStatus);
+            if (search) {
+                tickets = tickets.filter(t => 
+                    t.studentName.includes(search) || 
+                    t.id.toLowerCase().includes(search.toLowerCase()) || 
+                    t.subject.includes(search)
+                );
+            }
+
+            root.innerHTML = `
+                <div class="max-w-7xl mx-auto px-4 py-12 space-y-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-brand-navy">صندوق الوارد والشكاوى</h2>
+                        <p class="text-xs text-slate-500">إدارة وفلترة جميع طلبات الطلاب والرد عليها</p>
+                    </div>
+
+                    <!-- Filter & Search Controls Bar -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">البحث السريع</label>
+                            <input type="text" placeholder="ابحث برقم الطلب أو اسم الطالب..." value="${currentState.searchQuery || ''}"
+                                   oninput="currentState.searchQuery = this.value; renderAdminTicketsView();"
+                                   class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-brand-accent">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">تصفية حسب القسم</label>
+                            <select onchange="currentState.filterDept = this.value; renderAdminTicketsView();" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs bg-white">
+                                <option value="all">كافة الأقسام</option>
+                                ${DEPARTMENTS.map(d => `<option value="${d}" ${currentState.filterDept === d ? 'selected' : ''}>${d}</option>`).join('')}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">تصفية حسب الحالة</label>
+                            <select onchange="currentState.filterStatus = this.value; renderAdminTicketsView();" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs bg-white">
+                                <option value="all" ${currentState.filterStatus === 'all' ? 'selected' : ''}>كافة الحالات</option>
+                                <option value="new" ${currentState.filterStatus === 'new' ? 'selected' : ''}>جديد</option>
+                                <option value="in_progress" ${currentState.filterStatus === 'in_progress' ? 'selected' : ''}>قيد المعالجة</option>
+                                <option value="answered" ${currentState.filterStatus === 'answered' ? 'selected' : ''}>تمت الإجابة</option>
+                                <option value="closed" ${currentState.filterStatus === 'closed' ? 'selected' : ''}>مغلق</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Tickets Table -->
+                    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-right text-xs">
+                                <thead class="bg-slate-50 text-slate-600 border-b border-slate-200">
+                                    <tr>
+                                        <th class="p-4">رقم الطلب</th>
+                                        <th class="p-4">اسم الطالب</th>
+                                        <th class="p-4">القسم العلمي</th>
+                                        <th class="p-4">المرحلة والدراسة</th>
+                                        <th class="p-4">تاريخ الإرسال</th>
+                                        <th class="p-4">الحالة</th>
+                                        <th class="p-4">الإجراء</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100">
+                                    ${tickets.length === 0 ? `
+                                        <tr>
+                                            <td colspan="7" class="p-8 text-center text-slate-400">لا توجد طلبات مطابقة لمعايير البحث.</td>
+                                        </tr>
+                                    ` : tickets.map(ticket => {
+                                        const badge = getStatusBadge(ticket.status);
+                                        return `
+                                            <tr class="hover:bg-slate-50 transition">
+                                                <td class="p-4 font-mono font-bold text-brand-navy">${ticket.id}</td>
+                                                <td class="p-4 font-bold text-slate-800">${ticket.studentName}</td>
+                                                <td class="p-4 text-slate-600">${ticket.department}</td>
+                                                <td class="p-4 text-slate-500">${ticket.stage} (${ticket.studyType})</td>
+                                                <td class="p-4 text-slate-400">${formatDate(ticket.createdAt)}</td>
+                                                <td class="p-4">
+                                                    <span class="px-2.5 py-1 rounded-full font-bold border text-[10px] ${badge.class}">${badge.label}</span>
+                                                </td>
+                                                <td class="p-4">
+                                                    <button onclick="navigateTo('ticket-detail', { ticketId: '${ticket.id}' })" class="bg-brand-accent hover:bg-sky-600 text-white px-3 py-1.5 rounded-lg transition font-bold flex items-center gap-1 shadow-sm">
+                                                        <i class="fa-solid fa-envelope-open"></i> معاينة والرد
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        `;
+                                    }).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 11. ADMIN USER MANAGEMENT VIEW
+        function renderAdminUsersView() {
+            const users = DB.getUsers().filter(u => u.role === 'student');
+            const root = document.getElementById('app-root');
+
+            root.innerHTML = `
+                <div class="max-w-7xl mx-auto px-4 py-12 space-y-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-brand-navy">إدارة حسابات الطلاب</h2>
+                        <p class="text-xs text-slate-500">عرض جميع الطلاب المسجلين وإمكانية تنشيط أو تعطيل الحسابات</p>
+                    </div>
+
+                    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-right text-xs">
+                                <thead class="bg-slate-50 text-slate-600 border-b border-slate-200">
+                                    <tr>
+                                        <th class="p-4">اسم الطالب</th>
+                                        <th class="p-4">البريد الإلكتروني</th>
+                                        <th class="p-4">القسم العلمي</th>
+                                        <th class="p-4">المرحلة والدراسة</th>
+                                        <th class="p-4">تاريخ التسجيل</th>
+                                        <th class="p-4">حالة الحساب</th>
+                                        <th class="p-4">الإجراء</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100">
+                                    ${users.map(u => `
+                                        <tr class="hover:bg-slate-50 transition">
+                                            <td class="p-4 font-bold text-slate-800">${u.name}</td>
+                                            <td class="p-4 font-mono text-slate-600">${u.email}</td>
+                                            <td class="p-4 text-slate-600">${u.department || 'غير محدد'}</td>
+                                            <td class="p-4 text-slate-500">${u.stage || '-'} (${u.studyType || '-'})</td>
+                                            <td class="p-4 text-slate-400">${formatDate(u.createdAt)}</td>
+                                            <td class="p-4">
+                                                <span class="px-2.5 py-1 rounded-full font-bold text-[10px] ${u.status === 'active' ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
+                                                    ${u.status === 'active' ? 'نشط' : 'معطل'}
+                                                </span>
+                                            </td>
+                                            <td class="p-4">
+                                                <button onclick="toggleUserStatus('${u.id}')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition ${u.status === 'active' ? 'bg-rose-50 text-rose-600 hover:bg-rose-100' : 'bg-emerald-50 text-emerald-600 hover:bg-emerald-100'}">
+                                                    ${u.status === 'active' ? '<i class="fa-solid fa-ban ml-1"></i>تعطيل' : '<i class="fa-solid fa-check ml-1"></i>تنشيط'}
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 12. NOTIFICATIONS VIEW
+        function renderNotificationsView() {
+            const session = DB.getSession();
+            if (!session) return;
+
+            const notifs = DB.getNotifications().filter(n => n.userId === session.id);
+            // Mark all as read
+            const allNotifs = DB.getNotifications();
+            allNotifs.forEach(n => {
+                if (n.userId === session.id) n.read = true;
+            });
+            DB.saveNotifications(allNotifs);
+
+            const root = document.getElementById('app-root');
+            root.innerHTML = `
+                <div class="max-w-4xl mx-auto px-4 py-12 space-y-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-brand-navy">مركز الإشعارات والتنبيهات</h2>
+                        <p class="text-xs text-slate-500">سجل التنبيهات والردود الواردة فورياً</p>
+                    </div>
+
+                    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm divide-y divide-slate-100 overflow-hidden">
+                        ${notifs.length === 0 ? `
+                            <div class="p-12 text-center text-slate-400">
+                                <i class="fa-solid fa-bell-slash text-4xl mb-2"></i>
+                                <p class="text-sm">لا توجد إشعارات حالياً.</p>
+                            </div>
+                        ` : notifs.map(n => `
+                            <div class="p-5 flex items-start justify-between gap-4 hover:bg-slate-50 transition cursor-pointer" onclick="${n.ticketId ? `navigateTo('ticket-detail', { ticketId: '${n.ticketId}' })` : ''}">
+                                <div class="flex items-start gap-3.5">
+                                    <div class="w-10 h-10 rounded-xl bg-brand-accent/10 text-brand-accent flex items-center justify-center shrink-0 text-lg">
+                                        <i class="fa-solid fa-bell"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-brand-navy text-sm">${n.title}</h4>
+                                        <p class="text-xs text-slate-600 mt-1 leading-relaxed">${n.message}</p>
+                                        <span class="text-[10px] text-slate-400 mt-1 block">${formatDate(n.createdAt)}</span>
+                                    </div>
+                                </div>
+                                ${n.ticketId ? `
+                                    <button class="text-xs text-brand-accent font-bold hover:underline shrink-0">عرض الطلب</button>
+                                ` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // ================= GLOBAL INITIALIZATION =================
+        window.addEventListener('DOMContentLoaded', () => {
+            // Set dynamic current year in footer
+            document.getElementById('year-span').innerText = new Date().getFullYear();
+
+            // Set dynamic current time in top bar
+            const timeSpan = document.getElementById('current-time-display');
+            if (timeSpan) {
+                timeSpan.innerHTML = `<i class="fa-regular fa-clock ml-1 text-brand-gold"></i> ${new Date().toLocaleDateString('ar-IQ', { weekday: 'long', day: 'numeric', month: 'long' })}`;
+            }
+
+            // Initial view load
+            renderNav();
+            renderView();
+        });
+    </script>
+</body>
+</html>
